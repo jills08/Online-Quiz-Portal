@@ -26,12 +26,6 @@ The system uses **SQL Server** with the following key tables:
  **Quiz Table** – stores quiz questions, multiple-choice options, and the correct answer.
 
 These tables are linked through ASP.NET to provide a seamless experience between the user interface and database operations.
-![admin login](https://github.com/user-attachments/assets/8c293eec-ee59-41e5-b7eb-8f91b0a95c95)
-![create](https://github.com/user-attachments/assets/cf0910a7-7872-4901-89da-bad604fb0a5c)
-![quiz ](https://github.com/user-attachments/assets/cef92fb5-ad27-4c11-990b-ebedb8af38e5)
-![edit](https://github.com/user-attachments/assets/a7a6a421-c54c-403a-bae3-ad0f50ee13c9)      
-![result](https://github.com/user-attachments/assets/16f5b754-10eb-443c-bdff-28226f683652)
-
 
 
 **Key Learning Areas**
