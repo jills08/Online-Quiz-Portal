@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication1.onlineexam>
+
+@{
+    ViewBag.Title = "Manage Questions";
+    Layout = null;
+}
+
+<div class="panel-container">
+    <h2>Manage Questions</h2>
+
+    <a href="@Url.Action("Create", "Admin")" class="add-btn"> Add New Question</a>
+
+    <table class="table-quiz">
+        <thead>
+            <tr>
+                <th>Qid</th>
+                <th>Question</th>
+                <th>Options</th>
+                <th>Correct Answer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>@(item.Qid != null ? item.Qid.ToString() : "N/A")</td>
+
+                    <td>@item.Question</td>
+                    <td>
+                        @string.Join(", ", new[] { item.option1, item.option2, item.option3, item.option4 }
+                                          .Where(o => !string.IsNullOrEmpty(o)))
+                    </td>
+                    <td>@item.Correctans</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Admin", new { id = item.Qid })">Edit</a> |
+                        <a href="@Url.Action("Delete", "Admin", new { id = item.Qid })">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

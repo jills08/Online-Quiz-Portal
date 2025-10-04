@@ -1,0 +1,33 @@
+﻿@model WebApplication1.Models.QuizResultViewModel
+
+@{
+    ViewBag.Title = "Quiz Result";
+    Layout = null; 
+}
+
+<div class="panel-container">
+    <h2>Quiz Completed</h2>
+    <p><strong>Your Score:</strong> @Model.Score / @Model.TotalQuestions</p>
+
+    @foreach (var r in Model.Results)
+    {
+        <div class="question-block">
+            <h4>@r.Question</h4>
+            <p><strong>Your Answer:</strong> @r.UserAnswer</p>
+            <p><strong>Correct Answer:</strong> @r.CorrectAnswer</p>
+
+            @if (r.IsCorrect)
+            {
+                <p style="color:green;">✔ Correct</p>
+            }
+            else
+            {
+                <p style="color:red;">✘ Incorrect</p>
+            }
+            <hr />
+        </div>
+    }
+</div>
+
+
+<link href="~/Content/Site.css" rel="stylesheet" />

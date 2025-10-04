@@ -1,0 +1,79 @@
+﻿@model WebApplication1.onlineexam
+
+@{
+    ViewBag.Title = "Create Question";
+    Layout = null;
+}
+
+<div class="panel-container">
+    <h2>Create Question</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken() 
+
+        <div class="form-group">
+            <label>Question</label>
+            @Html.TextBoxFor(m => m.Question, new { @class = "form-control", placeholder = "Enter your question" })
+        </div>
+
+        <div class="form-group">
+            <label>Option 1</label>
+            @Html.TextBoxFor(m => m.option1, new { @class = "form-control", placeholder = "Enter option 1" })
+        </div>
+
+        <div class="form-group">
+            <label>Option 2</label>
+            @Html.TextBoxFor(m => m.option2, new { @class = "form-control", placeholder = "Enter option 2" })
+        </div>
+
+        <div class="form-group">
+            <label>Option 3</label>
+            @Html.TextBoxFor(m => m.option3, new { @class = "form-control", placeholder = "Enter option 3" })
+        </div>
+
+        <div class="form-group">
+            <label>Option 4</label>
+            @Html.TextBoxFor(m => m.option4, new { @class = "form-control", placeholder = "Enter option 4" })
+        </div>
+
+        <div class="form-group">
+            <label>Correct Answer</label>
+            @Html.TextBoxFor(m => m.Correctans, new { @class = "form-control", placeholder = "Enter correct answer" })
+        </div>
+
+        <button type="submit" class="add-btn">Save Question</button>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "cancel-btn" })
+    }
+</div>
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+        .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+        }
+
+    .cancel-btn {
+        margin-left: 10px;
+        color: #e74c3c;
+        text-decoration: none;
+    }
+
+        .cancel-btn:hover {
+            text-decoration: underline;
+        }
+</style>

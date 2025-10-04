@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuizdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUsers">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="onlineexam">
+          <Key>
+            <PropertyRef Name="Qid" />
+          </Key>
+          <Property Name="Qid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="option1" Type="nvarchar" MaxLength="100" />
+          <Property Name="option2" Type="nvarchar" MaxLength="100" />
+          <Property Name="option3" Type="nvarchar" MaxLength="100" />
+          <Property Name="option4" Type="nvarchar" MaxLength="100" />
+          <Property Name="Correctans" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="quizonline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="QuizdbModelStoreContainer">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="onlineexam" EntityType="Self.onlineexam" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuizdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="onlineexam">
+          <Key>
+            <PropertyRef Name="Qid" />
+          </Key>
+          <Property Name="Qid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="option1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="option2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="option3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="option4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Correctans" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="QuizdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="onlineexams" EntityType="Self.onlineexam" />
+          <FunctionImport Name="quizonline" ReturnType="Collection(QuizdbModel.quizonline_Result)" />
+          <EntitySet Name="AdminUsers" EntityType="QuizdbModel.AdminUser" />
+        </EntityContainer>
+        <ComplexType Name="quizonline_Result">
+          <Property Type="Int32" Name="Qid" Nullable="false" />
+          <Property Type="String" Name="Question" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="option1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="option2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="option3" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="option4" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Correctans" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuizdbModelStoreContainer" CdmEntityContainer="QuizdbEntities">
+          <EntitySetMapping Name="onlineexams">
+            <EntityTypeMapping TypeName="QuizdbModel.onlineexam">
+              <MappingFragment StoreEntitySet="onlineexam">
+                <ScalarProperty Name="Qid" ColumnName="Qid" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="option1" ColumnName="option1" />
+                <ScalarProperty Name="option2" ColumnName="option2" />
+                <ScalarProperty Name="option3" ColumnName="option3" />
+                <ScalarProperty Name="option4" ColumnName="option4" />
+                <ScalarProperty Name="Correctans" ColumnName="Correctans" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="quizonline" FunctionName="QuizdbModel.Store.quizonline">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuizdbModel.quizonline_Result">
+                <ScalarProperty Name="Qid" ColumnName="Qid" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="option1" ColumnName="option1" />
+                <ScalarProperty Name="option2" ColumnName="option2" />
+                <ScalarProperty Name="option3" ColumnName="option3" />
+                <ScalarProperty Name="option4" ColumnName="option4" />
+                <ScalarProperty Name="Correctans" ColumnName="Correctans" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="QuizdbModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUsers">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="4ef7b1c21f354f85ba30d40693821960" Name="Diagram1">
+        <EntityTypeShape EntityType="QuizdbModel.onlineexam" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuizdbModel.AdminUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

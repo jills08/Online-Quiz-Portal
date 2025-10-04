@@ -1,0 +1,129 @@
+﻿@model WebApplication1.onlineexam
+
+@{
+    ViewBag.Title = "Edit Question";
+    Layout = null;
+}
+
+<div class="panel-container">
+    <h2>Edit Question</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Qid)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Question, "Question")
+            @Html.TextBoxFor(m => m.Question, new { @class = "form-control", placeholder = "Enter your question" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.option1, "Option 1")
+            @Html.TextBoxFor(m => m.option1, new { @class = "form-control", placeholder = "Enter option 1" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.option2, "Option 2")
+            @Html.TextBoxFor(m => m.option2, new { @class = "form-control", placeholder = "Enter option 2" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.option3, "Option 3")
+            @Html.TextBoxFor(m => m.option3, new { @class = "form-control", placeholder = "Enter option 3" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.option4, "Option 4")
+            @Html.TextBoxFor(m => m.option4, new { @class = "form-control", placeholder = "Enter option 4" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Correctans, "Correct Answer")
+            @Html.TextBoxFor(m => m.Correctans, new { @class = "form-control", placeholder = "Enter correct answer" })
+        </div>
+
+        <button type="submit" class="btn-submit"> Update Question</button>
+        <a href="@Url.Action("Index", "Admin")" class="btn-cancel">↩ Back to List</a>
+    }
+</div>
+
+<style>
+    body {
+        background-image: url('/Images/quiz-bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .panel-container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        margin: 40px auto;
+        border-radius: 10px;
+        max-width: 700px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+        .panel-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+    .btn-submit {
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .btn-submit:hover {
+            background-color: #27ae60;
+        }
+
+    .btn-cancel {
+        margin-left: 10px;
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .btn-cancel:hover {
+            background-color: #c0392b;
+            color: white;
+        }
+</style>

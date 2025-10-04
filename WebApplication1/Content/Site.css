@@ -1,0 +1,114 @@
+﻿
+body {
+    background-image: url('/Images/quiz-bg.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.panel-container {
+    background: rgba(255, 255, 255, 0.92); 
+    padding: 25px;
+    margin: 40px auto;
+    border-radius: 10px;
+    max-width: 1000px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+    .panel-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+
+
+.table-quiz,
+.table.table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .table-quiz th,
+    .table-quiz td,
+    .table.table-bordered th,
+    .table.table-bordered td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .table-quiz th,
+    .table.table-bordered th {
+        background-color: #3498db;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .table-quiz tr:nth-child(even),
+    .table.table-bordered tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+/* ================================
+   Links & Buttons
+================================ */
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Add new question button (Admin panel) */
+.add-btn {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white !important;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+    .add-btn:hover {
+        background-color: #27ae60;
+    }
+
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+    }
+.panel-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 40px auto;
+    border-radius: 8px;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

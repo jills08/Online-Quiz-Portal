@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApplication1.onlineexam>
+
+@{
+    ViewBag.Title = "Online Quiz";
+    Layout = null; 
+    int serialNo = 1;
+}
+
+<div class="panel-container">
+    <h2>Online Quiz</h2>
+
+    @using (Html.BeginForm("SubmitQuiz", "OnlineQuiz", FormMethod.Post))
+    {
+        foreach (var q in Model)
+        {
+            <div class="question-block">
+                <h4>@serialNo. @q.Question</h4>
+
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q_@q.Qid" value="@q.option1" /> @q.option1
+                    </label><br />
+
+                    <label>
+                        <input type="radio" name="q_@q.Qid" value="@q.option2" /> @q.option2
+                    </label><br />
+
+                    <label>
+                        <input type="radio" name="q_@q.Qid" value="@q.option3" /> @q.option3
+                    </label><br />
+
+                    <label>
+                        <input type="radio" name="q_@q.Qid" value="@q.option4" /> @q.option4
+                    </label>
+                </div>
+            </div>
+            <hr />
+            serialNo++;
+        }
+
+        <button type="submit" class="add-btn">Submit Quiz</button>
+    }
+</div>
